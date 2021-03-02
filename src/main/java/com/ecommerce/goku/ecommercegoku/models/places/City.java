@@ -1,0 +1,53 @@
+package com.ecommerce.goku.ecommercegoku.models.places;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+@Entity
+public class City {
+
+    @Id
+    private Long id;
+
+    @Column
+    private String name;
+
+    @OneToMany
+    private State state;
+
+    public City(Long id) {
+    }
+
+    public City(Long id, String name, State state) {
+        this.id = id;
+        this.name = name;
+        this.state = state;
+    }
+
+    public static class Builder {
+        private Long id;
+        private String name;
+        private State state;
+
+        public Builder id(Long id) {
+            this.id = id;
+            return this;
+        }
+
+        public Builder name(String name) {
+            this.name = name;
+            return this;
+        }
+
+        public Builder state(State state) {
+            this.state = state;
+            return this;
+        }
+
+        public City build() {
+            return new City(id, name, state);
+        }
+    }
+}
