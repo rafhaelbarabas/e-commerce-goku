@@ -1,4 +1,4 @@
-package com.ecommerce.goku.ecommercegoku.models.places.users;
+package com.ecommerce.goku.ecommercegoku.models.users;
 
 public class User {
 

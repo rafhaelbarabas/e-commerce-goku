@@ -1,9 +1,6 @@
 package com.ecommerce.goku.ecommercegoku.models.places;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 
 @Entity
 public class City {
@@ -14,7 +11,8 @@ public class City {
     @Column
     private String name;
 
-    @OneToMany
+    @ManyToOne
+    @JoinColumn(nullable = false, name = "id_state", foreignKey = @ForeignKey(name = "fk_city_state"))
     private State state;
 
     public City(Long id) {

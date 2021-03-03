@@ -3,6 +3,7 @@ package com.ecommerce.goku.ecommercegoku.models.places;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "adresses")
 public class Address {
 
     @Id
@@ -15,7 +16,8 @@ public class Address {
     @Column
     private String zipCode;
 
-    @OneToMany
+    @ManyToOne
+    @JoinColumn(nullable = false, name = "id_city", foreignKey = @ForeignKey(name = "fk_address_city"))
     private City city;
 
     public Address() {
