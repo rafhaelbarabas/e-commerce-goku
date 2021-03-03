@@ -4,7 +4,7 @@ import com.ecommerce.goku.ecommercegoku.models.places.Address;
 
 import java.util.List;
 
-public interface AddressServiceRepresentation {
+public interface AddressService {
     public Address save(Address address);
 
     public Address update(Address address);

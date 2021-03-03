@@ -1,7 +1,7 @@
 package com.ecommerce.goku.ecommercegoku.api;
 
 import com.ecommerce.goku.ecommercegoku.models.places.Address;
-import com.ecommerce.goku.ecommercegoku.services.AddressServiceRepresentation;
+import com.ecommerce.goku.ecommercegoku.services.AddressService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 public class AdressesController {
 
     @Autowired
-    AddressServiceRepresentation service;
+    AddressService service;
 
     @PostMapping
     public ResponseEntity save(@RequestBody Address address) {
@@ -31,7 +31,9 @@ public class AdressesController {
     @DeleteMapping("{id}")
     public ResponseEntity delete(@PathVariable Long id) {
         service.delete(id);
-        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+        return ResponseEntity
+                .status(HttpStatus.NO_CONTENT)
+                .build();
     }
 
     @GetMapping
@@ -42,7 +44,9 @@ public class AdressesController {
     }
 
     @GetMapping("{id}")
-    public Address findById(@PathVariable Long id) {
-        return service.findById(id);
+    public ResponseEntity findById(@PathVariable Long id) {
+        return ResponseEntity
+                .ok()
+                .body(service.findById(id));
     }
 }
