@@ -25,6 +25,13 @@ public class CitiesController {
         this.service = service;
     }
 
+    @PostMapping
+    public ResponseEntity save(@RequestBody City city){
+        return ResponseEntity
+                .status(HttpStatus.CREATED)
+                .body(service.save(city));
+    }
+
     @GetMapping("{code}")
     public ResponseEntity findByStateCode(@PathVariable String code) {
         List<City> cities = service.findByStateCode(code);

@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/adresses")
 public class AdressesController {
@@ -48,5 +50,12 @@ public class AdressesController {
         return ResponseEntity
                 .ok()
                 .body(service.findById(id));
+    }
+
+    @GetMapping("zipcode/{zipCode}")
+    public ResponseEntity findByZipCode(@PathVariable String zipCode) {
+        return ResponseEntity
+                .ok()
+                .body(service.findByZipCode(zipCode));
     }
 }

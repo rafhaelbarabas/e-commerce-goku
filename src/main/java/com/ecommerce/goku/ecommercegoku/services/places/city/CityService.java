@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface CityService {
     List<City> findByStateCode(String stateCode);
+
+    City save(City city);
 }

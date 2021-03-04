@@ -25,6 +25,18 @@ public class City {
         this.state = state;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public State getState() {
+        return state;
+    }
+
     public static class Builder {
         private Long id;
         private String name;

@@ -3,12 +3,10 @@ package com.ecommerce.goku.ecommercegoku.services.places.address;
 import com.ecommerce.goku.ecommercegoku.models.places.Address;
 import com.ecommerce.goku.ecommercegoku.querybuilder.BasicQueryBuilder;
 import com.ecommerce.goku.ecommercegoku.repositories.AddressRepository;
-import com.querydsl.jpa.impl.JPAQuery;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
-import javax.persistence.EntityManager;
 import java.util.List;
 
 import static com.ecommerce.goku.ecommercegoku.models.places.QAddress.address1;
@@ -17,15 +15,9 @@ import static com.ecommerce.goku.ecommercegoku.models.places.QAddress.address1;
 public class AdressesServiceImp implements AddressService {
 
     private final AddressRepository repository;
-    private final EntityManager em;
 
-    public AdressesServiceImp(AddressRepository repository, EntityManager em) {
+    public AdressesServiceImp(AddressRepository repository) {
         this.repository = repository;
-        this.em = em;
-    }
-
-    private JPAQuery<Address> query() {
-        return new JPAQuery<>(em);
     }
 
     @Override
@@ -49,7 +41,7 @@ public class AdressesServiceImp implements AddressService {
         return BasicQueryBuilder.query()
                 .select(address1)
                 .from(address1)
-                .where(address1.zipCode.like(zipCode))
+                .where(address1.zipCode.contains(zipCode))
                 .fetch();
     }
 
