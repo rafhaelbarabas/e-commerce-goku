@@ -1,7 +1,7 @@
 package com.ecommerce.goku.ecommercegoku.api;
 
 import com.ecommerce.goku.ecommercegoku.models.places.Address;
-import com.ecommerce.goku.ecommercegoku.services.AddressService;
+import com.ecommerce.goku.ecommercegoku.services.places.address.AddressService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

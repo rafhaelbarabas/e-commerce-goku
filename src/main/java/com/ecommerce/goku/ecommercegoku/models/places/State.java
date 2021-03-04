@@ -1,10 +1,9 @@
 package com.ecommerce.goku.ecommercegoku.models.places;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
+@Table(name = "states", uniqueConstraints = {@UniqueConstraint(columnNames = {"code"})})
 public class State {
 
     @Id

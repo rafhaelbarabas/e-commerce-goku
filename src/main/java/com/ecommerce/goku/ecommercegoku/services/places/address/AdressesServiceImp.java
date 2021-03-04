@@ -1,6 +1,7 @@
-package com.ecommerce.goku.ecommercegoku.services;
+package com.ecommerce.goku.ecommercegoku.services.places.address;
 
 import com.ecommerce.goku.ecommercegoku.models.places.Address;
+import com.ecommerce.goku.ecommercegoku.querybuilder.BasicQueryBuilder;
 import com.ecommerce.goku.ecommercegoku.repositories.AddressRepository;
 import com.querydsl.jpa.impl.JPAQuery;
 import org.springframework.http.HttpStatus;
@@ -45,7 +46,8 @@ public class AdressesServiceImp implements AddressService {
 
     @Override
     public List<Address> findByZipCode(String zipCode) {
-        return query().select(address1)
+        return BasicQueryBuilder.query()
+                .select(address1)
                 .from(address1)
                 .where(address1.zipCode.like(zipCode))
                 .fetch();

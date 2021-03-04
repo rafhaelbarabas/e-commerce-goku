@@ -3,6 +3,7 @@ package com.ecommerce.goku.ecommercegoku.models.places;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "cities", uniqueConstraints = {@UniqueConstraint(columnNames = {"name", "id_state"})})
 public class City {
 
     @Id
@@ -15,7 +16,7 @@ public class City {
     @JoinColumn(nullable = false, name = "id_state", foreignKey = @ForeignKey(name = "fk_city_state"))
     private State state;
 
-    public City(Long id) {
+    public City() {
     }
 
     public City(Long id, String name, State state) {
